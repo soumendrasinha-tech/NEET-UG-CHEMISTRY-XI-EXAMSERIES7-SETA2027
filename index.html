@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET CHEMISTRY XI EXAM SERIES 7 SET A - Redox & Electrochemistry</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- MathJax for rendering LaTeX and complex chemical equations -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Chart.js for graphical reporting -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- html2canvas for generating PNG scorecard -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        /* Anti-photography watermark grid overlay */
+        .watermark-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.12;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='200' viewBox='0 0 250 200'%3E%3Ctext x='20' y='50' fill='%23000' font-size='11' font-family='sans-serif' transform='rotate(-20 20,50)'%3ESOUMENDRA SIR BIOLOGY CLASSES%3C/text%3E%3Ctext x='20' y='120' fill='%23000' font-size='10' font-family='sans-serif' transform='rotate(-20 20,120)'%3ECONFIDENTIAL • DO NOT PHOTO%3C/text%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+
+        /* Palette dots status */
+        .dot-answered { background-color: #22c55e; color: white; border-color: #16a34a; }
+        .dot-skipped { background-color: #ef4444; color: white; border-color: #dc2626; }
+        .dot-review { background-color: #eab308; color: white; border-color: #ca8a04; }
+        .dot-unvisited { background-color: #e5e7eb; color: #4b5563; border-color: #d1d5db; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between overflow-x-hidden" oncontextmenu="return false;">
+
+    <!-- Dynamic Anti-Camera Watermark -->
+    <div class="watermark-overlay" id="watermark"></div>
+
+    <!-- Top Header -->
+    <header class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center border-b border-indigo-700/50">
+            <div>
+                <h1 class="text-xl md:text-2xl font-extrabold tracking-tight text-amber-400">
+                    Soumendra Sir's Biology Classes-8910587106
+                </h1>
+                <p class="text-xs md:text-sm text-indigo-200 font-medium">
+                    NEET CHEMISTRY XI EXAM SERIES 7 SET A • Redox Reactions & Electrochemistry
+                </p>
+            </div>
+            <div id="header-timer" class="hidden flex items-center space-x-2 bg-slate-800/80 px-4 py-2 rounded-lg border border-amber-500/40">
+                <i class="fa-solid fa-stopwatch text-amber-400 animate-pulse text-lg"></i>
+                <span class="text-xs text-slate-300 font-semibold uppercase">Time Left:</span>
+                <span id="timer-display" class="font-mono text-xl font-bold text-amber-300">01:00:00</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-3 md:p-6">
+
+        <!-- VERIFICATION & LOGIN SCREEN -->
+        <div id="login-screen" class="max-w-xl mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden my-6">
+            <div class="bg-indigo-900 p-6 text-white text-center relative">
+                <div class="absolute top-2 right-3 text-[10px] text-indigo-300 bg-indigo-950 px-2 py-0.5 rounded">VERIFIED PORTAL</div>
+                <h2 class="text-2xl font-bold text-amber-300 mb-1">CBT Examination Login</h2>
+                <p class="text-xs text-indigo-100">NEET XI Series 7 Set A (Total Marks: 180 | Duration: 60 Mins)</p>
+            </div>
+            
+            <form id="login-form" onsubmit="validateLogin(event)" class="p-6 space-x-0 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Candidate Name</label>
+                    <input type="text" id="candidate-name" required placeholder="Enter full name" 
+                        class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm font-medium">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Today's Exam Password (DDMMYYYY)</label>
+                    <input type="password" id="exam-password" required placeholder="Enter DDMMYYYY password" 
+                        class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm font-mono">
+                    <p class="text-[11px] text-slate-500 mt-1"><i class="fa-solid fa-circle-info mr-1 text-indigo-600"></i> Password matches current date e.g. <span id="pwd-hint-date" class="font-bold">10102026</span></p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Captcha Verification</label>
+                    <div class="flex items-center space-x-3 mb-2">
+                        <div id="captcha-box" class="bg-slate-200 border border-slate-400 font-mono font-bold text-lg tracking-widest px-4 py-2 rounded text-slate-800 select-none line-through italic decoration-rose-500">
+                            9X2B7
+                        </div>
+                        <button type="button" onclick="generateCaptcha()" class="p-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded text-slate-600 transition">
+                            <i class="fa-solid fa-rotate"></i>
+                        </button>
+                    </div>
+                    <input type="text" id="captcha-input" required placeholder="Enter captcha code" 
+                        class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm font-medium uppercase">
+                </div>
+
+                <div class="bg-amber-50 border-l-4 border-amber-500 p-3 rounded text-xs text-amber-900 space-y-1">
+                    <p class="font-bold"><i class="fa-solid fa-shield-halved mr-1"></i> Examination Rules & Instructions:</p>
+                    <ul class="list-disc list-inside space-y-0.5 text-[11px] text-amber-800">
+                        <li>Total Questions: <b>45</b> | Total Time: <b>60 Minutes</b> | Total Marks: <b>180</b>.</li>
+                        <li>Marking Scheme: <b>+4</b> for correct answer, <b>-1</b> for wrong answer, <b>0</b> for unattempted.</li>
+                        <li>Full-screen enforcement active. Tab switching triggers <b>3-strike automatic submission</b>.</li>
+                        <li>Copy-paste, screen capture attempt, & context menu are strictly blocked.</li>
+                    </ul>
+                </div>
+
+                <div id="login-error" class="hidden text-xs text-red-600 font-semibold bg-red-50 p-2.5 rounded border border-red-200"></div>
+
+                <button type="submit" class="w-full py-3 bg-indigo-700 hover:bg-indigo-800 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition text-sm uppercase tracking-wide">
+                    Start Test in Fullscreen Mode <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- CBT EXAMINATION INTERFACE -->
+        <div id="cbt-interface" class="hidden grid grid-cols-1 lg:grid-cols-4 gap-6">
+            
+            <!-- Left Side: Question Container (Cols 3) -->
+            <div class="lg:col-span-3 bg-white rounded-xl shadow-md border border-slate-200 flex flex-col justify-between overflow-hidden">
+                
+                <!-- Question Header -->
+                <div class="bg-slate-100 border-b border-slate-200 p-4 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-700 bg-indigo-100 px-2.5 py-1 rounded-full uppercase tracking-wider" id="q-category-tag">
+                            Question Category
+                        </span>
+                        <h3 class="text-lg font-extrabold text-slate-800 mt-1" id="q-number-title">
+                            Question 1 of 45
+                        </h3>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-slate-500 block">Marks Scheme</span>
+                        <span class="text-xs font-bold text-emerald-600">+4</span> / <span class="text-xs font-bold text-rose-600">-1</span>
+                    </div>
+                </div>
+
+                <!-- Question Text & Options Body -->
+                <div class="p-5 md:p-6 space-y-6 overflow-y-auto max-h-[60vh]" id="question-scroll-area">
+                    <div id="question-text" class="text-sm md:text-base text-slate-800 leading-relaxed font-medium space-y-3">
+                        <!-- Dynamic Question Text -->
+                    </div>
+
+                    <div id="options-container" class="space-y-3 pt-2">
+                        <!-- Dynamic Options rendered here -->
+                    </div>
+                </div>
+
+                <!-- Footer Navigation Buttons -->
+                <div class="bg-slate-50 border-t border-slate-200 p-4 flex flex-wrap gap-2 justify-between items-center">
+                    <div class="flex space-x-2">
+                        <button onclick="markForReview()" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold rounded-lg transition shadow-sm">
+                            <i class="fa-solid fa-bookmark mr-1"></i> Mark for Review
+                        </button>
+                        <button onclick="clearResponse()" class="px-3 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold rounded-lg transition">
+                            Clear Response
+                        </button>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="navigateQuestion(-1)" id="btn-prev" class="px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition disabled:opacity-40">
+                            <i class="fa-solid fa-chevron-left mr-1"></i> Previous
+                        </button>
+                        <button onclick="navigateQuestion(1)" id="btn-next" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition shadow-sm">
+                            Save & Next <i class="fa-solid fa-chevron-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Question Palette & Candidate Info (Col 1) -->
+            <div class="lg:col-span-1 space-y-4">
+                
+                <!-- Candidate Info Card -->
+                <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200">
+                    <div class="flex items-center space-x-3 border-b border-slate-100 pb-3 mb-3">
+                        <div class="w-10 h-10 rounded-full bg-indigo-900 text-amber-400 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <p class="text-xs text-slate-400 uppercase font-semibold">Candidate</p>
+                            <h4 id="display-candidate-name" class="text-sm font-bold text-slate-800 truncate">Candidate Name</h4>
+                        </div>
+                    </div>
+
+                    <!-- Legend Grid -->
+                    <div class="grid grid-cols-2 gap-2 text-[11px] font-medium text-slate-600">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-4 h-4 rounded-full dot-answered border inline-block flex-shrink-0"></span>
+                            <span>Answered</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="w-4 h-4 rounded-full dot-skipped border inline-block flex-shrink-0"></span>
+                            <span>Not Answered</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="w-4 h-4 rounded-full dot-review border inline-block flex-shrink-0"></span>
+                            <span>Marked Review</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="w-4 h-4 rounded-full dot-unvisited border inline-block flex-shrink-0"></span>
+                            <span>Not Visited</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questions Palette Grid -->
+                <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200">
+                    <h4 class="text-xs font-extrabold text-slate-700 uppercase mb-3 border-b pb-2">
+                        Question Palette (45 Questions)
+                    </h4>
+                    
+                    <div id="palette-grid" class="grid grid-cols-5 gap-2 max-h-[40vh] overflow-y-auto pr-1">
+                        <!-- Dynamic Colorful Circular Dots Rendered Here -->
+                    </div>
+
+                    <div class="mt-5 pt-3 border-t border-slate-200">
+                        <button onclick="confirmSubmitTest()" class="w-full py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs uppercase rounded-lg shadow transition tracking-wider">
+                            <i class="fa-solid fa-paper-plane mr-1"></i> Submit Examination
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- RESULTS & FEEDBACK REPORT SCREEN -->
+        <div id="result-screen" class="hidden max-w-4xl mx-auto space-y-6 my-4">
+            
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-6 text-center relative">
+                    <div class="inline-block px-3 py-1 bg-amber-400 text-slate-900 text-xs font-bold rounded-full mb-2 uppercase">Official Scorecard</div>
+                    <h2 class="text-2xl font-black text-amber-300">EXAMINATION PERFORMANCE REPORT</h2>
+                    <p class="text-xs text-indigo-200 mt-1">Soumendra Sir's Biology Classes-8910587106</p>
+                </div>
+
+                <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    
+                    <!-- Stats Overview -->
+                    <div class="md:col-span-2 space-y-4">
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                            <div class="bg-slate-50 border border-slate-200 p-3 rounded-xl">
+                                <span class="text-[10px] text-slate-500 uppercase font-bold block">Total Marks</span>
+                                <span class="text-xl font-extrabold text-indigo-700" id="res-score">0 / 180</span>
+                            </div>
+                            <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-xl">
+                                <span class="text-[10px] text-emerald-600 uppercase font-bold block">Correct</span>
+                                <span class="text-xl font-extrabold text-emerald-600" id="res-correct">0</span>
+                            </div>
+                            <div class="bg-rose-50 border border-rose-200 p-3 rounded-xl">
+                                <span class="text-[10px] text-rose-600 uppercase font-bold block">Incorrect</span>
+                                <span class="text-xl font-extrabold text-rose-600" id="res-incorrect">0</span>
+                            </div>
+                            <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl">
+                                <span class="text-[10px] text-amber-600 uppercase font-bold block">Accuracy</span>
+                                <span class="text-xl font-extrabold text-amber-600" id="res-accuracy">0%</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
+                            <p><b>Candidate Name:</b> <span id="res-name" class="font-semibold text-slate-800"></span></p>
+                            <p><b>Exam Series:</b> <span class="font-semibold text-slate-800">NEET CHEMISTRY XI EXAM SERIES 7 SET A</span></p>
+                            <p><b>Topic:</b> Redox Reactions & Electrochemistry</p>
+                            <p><b>Submission Timestamp:</b> <span id="res-timestamp" class="font-mono text-slate-600"></span></p>
+                        </div>
+                    </div>
+
+                    <!-- Doughnut Chart Canvas -->
+                    <div class="flex flex-col items-center justify-center p-2 bg-slate-50 rounded-xl border border-slate-200">
+                        <h4 class="text-xs font-bold text-slate-600 mb-2 uppercase">Analysis Chart</h4>
+                        <div class="w-44 h-44">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Anti-Tamper PNG Generator Section -->
+                <div class="bg-indigo-950 p-6 text-center text-white border-t border-indigo-900 space-y-3">
+                    <p class="text-xs text-indigo-200">
+                        To submit your verified scorecard to <b>Soumendra Sir</b>, click the button below to generate a secure anti-tamper certificate image and send via WhatsApp.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <button onclick="generateAndSendWhatsAppPNG()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-lg transition flex items-center">
+                            <i class="fa-brands fa-whatsapp text-lg mr-2"></i> Send Verified Result Card to 8910587106
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HIDDEN OFFICIAL CERTIFICATE CARD FOR PNG CAPTURE -->
+            <div id="certificate-card" class="bg-white p-8 border-4 border-indigo-900 rounded-2xl w-[650px] mx-auto text-slate-800 relative hidden" style="font-family: 'Inter', sans-serif;">
+                <div class="text-center border-b-2 border-slate-200 pb-4 mb-4">
+                    <h2 class="text-xl font-black text-indigo-900 uppercase">SOUMENDRA SIR'S BIOLOGY CLASSES</h2>
+                    <p class="text-xs text-slate-500 font-bold">Contact / Official WhatsApp: +91 8910587106</p>
+                    <div class="inline-block bg-amber-400 text-slate-900 text-[10px] font-black px-3 py-0.5 rounded-full mt-2 uppercase">Official CBT Result Certificate</div>
+                </div>
+
+                <div class="space-y-3 text-xs mb-6">
+                    <div class="flex justify-between border-b pb-1">
+                        <span class="text-slate-500 font-bold">Candidate Name:</span>
+                        <span id="cert-name" class="font-black text-slate-900 text-sm"></span>
+                    </div>
+                    <div class="flex justify-between border-b pb-1">
+                        <span class="text-slate-500 font-bold">Exam Topic:</span>
+                        <span class="font-bold text-slate-800">NEET CHEMISTRY XI EXAM SERIES 7 SET A</span>
+                    </div>
+                    <div class="flex justify-between border-b pb-1">
+                        <span class="text-slate-500 font-bold">Syllabus:</span>
+                        <span class="font-bold text-slate-700">Redox Reactions & Electrochemistry</span>
+                    </div>
+                    <div class="flex justify-between border-b pb-1">
+                        <span class="text-slate-500 font-bold">Date & Time:</span>
+                        <span id="cert-date" class="font-mono text-slate-700"></span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-2 text-center my-6 bg-slate-100 p-4 rounded-xl border border-slate-300">
+                    <div>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Total Score</span>
+                        <span id="cert-score" class="text-lg font-black text-indigo-800"></span>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-emerald-600 uppercase block">Correct (+4)</span>
+                        <span id="cert-correct" class="text-lg font-black text-emerald-600"></span>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-rose-600 uppercase block">Incorrect (-1)</span>
+                        <span id="cert-incorrect" class="text-lg font-black text-rose-600"></span>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-amber-600 uppercase block">Accuracy</span>
+                        <span id="cert-accuracy" class="text-lg font-black text-amber-600"></span>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-end pt-4 border-t-2 border-slate-200 text-[10px] text-slate-400">
+                    <div>
+                        <p class="font-bold text-slate-700">OFFICIAL SECURITY STAMP</p>
+                        <p>This document officially belongs to SOUMENDRA SIR BIOLOGY CLASSES.</p>
+                        <p>Digitally Verified CBT Performance Record</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="border-b border-slate-400 w-32 mb-1"></div>
+                        <p class="font-bold text-slate-800">Authorized Signature</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-center text-xs py-3 border-t border-slate-800 mt-6">
+        <p>This exam officially belongs to <b>SOUMENDRA SIR BIOLOGY CLASSES</b>. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // MASTER QUESTION DATABASE (45 Non-repeating Chemistry Questions)
+        // Distribution: 10 Statement-based, 5 Assertion-Reasoning, 5 Case Study, 25 Numerical/Analytical
+        const rawQuestions = [
+            
+            // --- STATEMENT BASED QUESTIONS (10) ---
+            {
+                category: "Statement Based",
+                text: "<b>Statement I:</b> Standard hydrogen electrode (SHE) is taken as a reference electrode and its electrode potential is arbitrarily taken as 0.00 V at all temperatures.<br><b>Statement II:</b> The cell reaction of SHE is given by $2H^+(aq) + 2e^- \\rightleftharpoons H_2(g)$ at $1\\text{ bar}$ pressure and $1\\text{ M}$ concentration.",
+                options: [
+                    "Both Statement I and Statement II are correct",
+                    "Both Statement I and Statement II are incorrect",
+                    "Statement I is correct but Statement II is incorrect",
+                    "Statement I is incorrect but Statement II is correct"
+                ],
+                correct: 0
+            },
+            {
+                category: "Statement Based",
+                text: "<b>Statement I:</b> Molar conductivity ($\n\\Lambda_m$) of strong electrolytes increases sharply on dilution.<br><b>Statement II:</b> On dilution, the number of ions per unit volume decreases, but the total volume containing ions increases.",
+                options: [
+                    "Both Statement I and Statement II are correct",
+                    "Both Statement I and Statement II are incorrect",
+                    "Statement I is incorrect but Statement II is correct",
+                    "Statement I is correct but Statement II is incorrect"
+                ],
+                correct: 2
+            },
+            {
+                category: "Statement Based",
+                text: "<b>Statement I:</b> Rusting of iron is an electrochemical phenomenon where iron acts as anode.<br><b>Statement II:</b> In electrochemical cell of rusting, $\\text{O}_2(g)$ is reduced at cathode in presence of $\\text{H}^+$ ions.",
+                options: [
+                    "Both Statement I and Statement II are correct",
+                    "Both Statement I and Statement II are incorrect",
+                    "Statement I is correct but Statement II is incorrect",
+                    "Statement I is incorrect but Statement II is correct"
+                ],
+                correct: 0
+            },
+            {
+                category: "Statement Based",
+                text: "<b>Statement I:</b> Oxidation number of oxygen in $\\text{F}_2\\text{O}$ is $-2$.<br><b>Statement II:</b> Fluorine is more electronegative than oxygen, so fluorine gets an oxidation state of $-1$.",
+                options: [
+                    "Both Statement I and Statement II are correct",
+                    "Both Statement I and Statement II are incorrect",
+                    "Statement I is incorrect but Statement II is correct",
+                    "Statement I is correct but Statement II is incorrect"
+                ],
+                correct: 2
+            },
+            {
+                category: "Statement Based",
+                text: "<b>Statement I:</b> For a galvanic cell, Gibbs free energy change $\\Delta G^\\circ$ is negative when cell potential $E^\\circ_{\\text{cell}}$ is positive.<br><b>Statement II:</b> Relationship is given by $\\Delta G^\\circ = -nFE^\\circ_{\\text{cell}}$.",
+                options: [
+                    "Both Statement I and Statement II are correct",
+                    "Both Statement I and Statement II are incorrect",
+                    "Statement I is correct but Statement II is incorrect",
+                    "Statement I is incorrect but Statement II is correct"
+                ],
+                correct: 0
+            },
+            {
+                category: "Statement Based",
+                text: "<b>Statement I:</b> Lead storage battery is a secondary cell that can be recharged by passing direct current through it.<br><b>Statement II:</b> During discharging of lead storage battery, $\\text{PbSO}_4$ is reduced to $\\text{Pb}$ at the anode.",
+                options: [
+                    "Both Statement I and Statement II are correct",
+                    "Both Statement I and Statement II are incorrect",
+                    "Statement I is correct but Statement II is incorrect",
+                    "Statement I is incorrect but Statement II is correct"
+                ],
+                correct: 2
+            },
+            {
+                category: "Statement Based",
+                text: "<b>Statement I:</b> Disproportionation is a redox reaction in which the same element undergoes both oxidation and reduction.<br><b>Statement II:</b> Decomposition of hydrogen peroxide $2\\text{H}_2\\text{O}_2 \\rightarrow 2\\text{H}_2\\text{O} + \\text{O}_2$ is an example of disproportionation.",
+                options: [
+                    "Both Statement I and Statement II are correct",
+                    "Both Statement I and Statement II are incorrect",
+                    "Statement I is correct but Statement II is incorrect",
+                    "Statement I is incorrect but Statement II is correct"
+                ],
+                correct: 0
+            },
+            {
+                category: "Statement Based",
+                text: "<b>Statement I:</b> Salt bridge maintains electrical neutrality in two half-cells of a Galvanic cell.<br><b>Statement II:</b> Salt bridge contains inert electrolyte like $\\text{KNO}_3$ in agar-agar gel whose ionic mobilities are nearly equal.",
+                options: [
+                    "Both Statement I and Statement II are correct",
+                    "Both Statement I and Statement II are incorrect",
+                    "Statement I is correct but Statement II is incorrect",
+                    "Statement I is incorrect but Statement II is correct"
+                ],
+                correct: 0
+            },
+            {
+                category: "Statement Based",
+                text: "<b>Statement I:</b> Metallic conduction decreases with increase in temperature.<br><b>Statement II:</b> Electrolytic conduction increases with increase in temperature due to increase in ionic mobility.",
+                options: [
+                    "Both Statement I and Statement II are correct",
+                    "Both Statement I and Statement II are incorrect",
+                    "Statement I is correct but Statement II is incorrect",
+                    "Statement I is incorrect but Statement II is correct"
+                ],
+                correct: 0
+            },
+            {
+                category: "Statement Based",
+                text: "<b>Statement I:</b> $\\text{KMnO}_4$ acts as a self-indicator in redox titrations.<br><b>Statement II:</b> In acidic medium, $\\text{MnO}_4^-$ (purple) is reduced to $\\text{Mn}^{2+}$ (colorless).",
+                options: [
+                    "Both Statement I and Statement II are correct",
+                    "Both Statement I and Statement II are incorrect",
+                    "Statement I is correct but Statement II is incorrect",
+                    "Statement I is incorrect but Statement II is correct"
+                ],
+                correct: 0
+            },
+
+            // --- ASSERTION & REASONING QUESTIONS (5) ---
+            {
+                category: "Assertion & Reason",
+                text: "<b>Assertion (A):</b> Limiting molar conductivity of weak electrolytes ($\n\\Lambda_m^\\circ$) cannot be obtained directly by extrapolation of $\n\\Lambda_m$ vs $\\sqrt{c}$ graph.<br><b>Reason (R):</b> Weak electrolytes do not dissociate completely at finite concentration and $\n\\Lambda_m$ increases steeply near zero concentration.",
+                options: [
+                    "Both A and R are true, and R is the correct explanation of A",
+                    "Both A and R are true, but R is NOT the correct explanation of A",
+                    "A is true, but R is false",
+                    "A is false, but R is true"
+                ],
+                correct: 0
+            },
+            {
+                category: "Assertion & Reason",
+                text: "<b>Assertion (A):</b> Fluorine is the strongest oxidizing agent among halogens.<br><b>Reason (R):</b> Fluorine has the highest negative electron gain enthalpy among halogens.",
+                options: [
+                    "Both A and R are true, and R is the correct explanation of A",
+                    "Both A and R are true, but R is NOT the correct explanation of A",
+                    "A is true, but R is false",
+                    "A is false, but R is true"
+                ],
+                correct: 2
+            },
+            {
+                category: "Assertion & Reason",
+                text: "<b>Assertion (A):</b> Conductivity ($\n\\kappa$) of an electrolytic solution decreases with dilution.<br><b>Reason (R):</b> On dilution, the number of ions per unit volume of solution decreases.",
+                options: [
+                    "Both A and R are true, and R is the correct explanation of A",
+                    "Both A and R are true, but R is NOT the correct explanation of A",
+                    "A is true, but R is false",
+                    "A is false, but R is true"
+                ],
+                correct: 0
+            },
+            {
+                category: "Assertion & Reason",
+                text: "<b>Assertion (A):</b> The oxidation state of iron in $\\text{Fe}_3\\text{O}_4$ is $+8/3$.<br><b>Reason (R):</b> $\\text{Fe}_3\\text{O}_4$ is a mixed oxide containing $\\text{FeO}$ and $\\text{Fe}_2\\text{O}_3$ in $1:1$ ratio.",
+                options: [
+                    "Both A and R are true, and R is the correct explanation of A",
+                    "Both A and R are true, but R is NOT the correct explanation of A",
+                    "A is true, but R is false",
+                    "A is false, but R is true"
+                ],
+                correct: 0
+            },
+            {
+                category: "Assertion & Reason",
+                text: "<b>Assertion (A):</b> Copper does not dissolve in dilute $\\text{HCl}$ to evolve $\\text{H}_2$ gas.<br><b>Reason (R):</b> Standard reduction potential of $\\text{Cu}^{2+}/\\text{Cu}$ ($+0.34\\text{ V}$) is higher than that of $\\text{H}^+/\\text{H}_2$ ($0.00\\text{ V}$).",
+                options: [
+                    "Both A and R are true, and R is the correct explanation of A",
+                    "Both A and R are true, but R is NOT the correct explanation of A",
+                    "A is true, but R is false",
+                    "A is false, but R is true"
+                ],
+                correct: 0
+            },
+
+            // --- CASE STUDY BASED QUESTIONS (5) ---
+            {
+                category: "Case Study",
+                text: "<b>Case Study Context:</b> Kohlrausch's law of independent migration of ions states that limiting molar conductivity of an electrolyte can be represented as the sum of individual ionic contributions.<br><br><b>Question 1:</b> Calculate $\n\\Lambda_m^\\circ$ for $\\text{CH}_3\\text{COOH}$ given: $\n\\Lambda_m^\\circ(\\text{HCl}) = 426\\text{ S cm}^2\\text{mol}^{-1}$, $\n\\Lambda_m^\\circ(\\text{NaCl}) = 126\\text{ S cm}^2\\text{mol}^{-1}$, and $\n\\Lambda_m^\\circ(\\text{CH}_3\\text{COONa}) = 91\\text{ S cm}^2\\text{mol}^{-1}$.",
+                options: [
+                    "391 S cm² mol⁻¹",
+                    "517 S cm² mol⁻¹",
+                    "218 S cm² mol⁻¹",
+                    "300 S cm² mol⁻¹"
+                ],
+                correct: 0
+            },
+            {
+                category: "Case Study",
+                text: "<b>Case Study Context:</b> In a fuel cell, chemical energy of fuel is converted directly into electrical energy. The most successful fuel cell is $\\text{H}_2\\text{-O}_2$ fuel cell.<br><br><b>Question 2:</b> What is the overall cell reaction occurring in a Hydrogen-Oxygen fuel cell using alkaline electrolyte?",
+                options: [
+                    "$2\\text{H}_2(g) + \\text{O}_2(g) \\rightarrow 2\\text{H}_2\\text{O}(l)$",
+                    "$\\text{H}^+(aq) + \\text{OH}^-(aq) \\rightarrow \\text{H}_2\\text{O}(l)$",
+                    "$\\text{CH}_4(g) + 2\\text{O}_2(g) \\rightarrow \\text{CO}_2(g) + 2\\text{H}_2\\text{O}(l)$",
+                    "$2\\text{H}_2\\text{O}(l) \\rightarrow 2\\text{H}_2(g) + \\text{O}_2(g)$"
+                ],
+                correct: 0
+            },
+            {
+                category: "Case Study",
+                text: "<b>Case Study Context:</b> Electrolysis involves chemical decomposition of electrolytes by electric current. At electrodes, product depends on reduction potentials.<br><br><b>Question 3:</b> During electrolysis of aqueous $\\text{NaCl}$ using inert platinum electrodes, what are the primary products evolved at Cathode and Anode respectively?",
+                options: [
+                    "Cathode: $\\text{H}_2$, Anode: $\\text{Cl}_2$",
+                    "Cathode: $\\text{Na}$, Anode: $\\text{Cl}_2$",
+                    "Cathode: $\\text{H}_2$, Anode: $\\text{O}_2$",
+                    "Cathode: $\\text{Na}$, Anode: $\\text{O}_2$"
+                ],
+                correct: 0
+            },
+            {
+                category: "Case Study",
+                text: "<b>Case Study Context:</b> Lead storage battery consists of lead anode and a grid of lead packed with $\\text{PbO}_2$ cathode, immersed in $38\\%$ $\\text{H}_2\\text{SO}_4$.<br><br><b>Question 4:</b> What happens to the concentration and density of $\\text{H}_2\\text{SO}_4$ during discharging of lead accumulator?",
+                options: [
+                    "Both concentration and density of H₂SO₄ decrease",
+                    "Both concentration and density of H₂SO₄ increase",
+                    "Concentration increases while density decreases",
+                    "Concentration decreases while density remains constant"
+                ],
+                correct: 0
+            },
+            {
+                category: "Case Study",
+                text: "<b>Case Study Context:</b> Redox titrations use oxidizing agents like $\\text{K}_2\\text{Cr}_2\\text{O}_7$ and $\\text{KMnO}_4$ to estimate reducing substances.<br><br><b>Question 5:</b> How many moles of $\\text{Fe}^{2+}$ ions are oxidized by $1\\text{ mole}$ of $\\text{Cr}_2\\text{O}_7^{2-}$ ions in acidic solution?",
+                options: [
+                    "6 moles",
+                    "5 moles",
+                    "2 moles",
+                    "3 moles"
+                ],
+                correct: 0
+            },
+
+            // --- NUMERICAL / CRITICAL ANALYTICAL QUESTIONS (25) ---
+            {
+                category: "Numerical / Critical",
+                text: "Find the oxidation state of sulfur in Caro's acid (Peroxomonosulfuric acid, $\\text{H}_2\\text{SO}_5$).",
+                options: ["+6", "+8", "+10", "+4"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "Calculate standard cell emf ($E^\\circ_{\\text{cell}}$) for cell: $\\text{Zn}(s) | \\text{Zn}^{2+}(aq) || \\text{Ag}^+(aq) | \\text{Ag}(s)$, given $E^\\circ_{\\text{Zn}^{2+}/\\text{Zn}} = -0.76\\text{ V}$ and $E^\\circ_{\\text{Ag}^+/\\text{Ag}} = +0.80\\text{ V}$.",
+                options: ["+1.56 V", "+0.04 V", "-1.56 V", "+1.24 V"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "The resistance of $0.01\\text{ M}$ solution of an electrolyte is $200\\text{ }\\Omega$. If cell constant is $1.0\\text{ cm}^{-1}$, calculate its molar conductivity $\n\\Lambda_m$ in $\\text{S cm}^2\\text{mol}^{-1}$.",
+                options: ["500 S cm² mol⁻¹", "200 S cm² mol⁻¹", "100 S cm² mol⁻¹", "50 S cm² mol⁻¹"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "For the cell reaction $\\text{Fe}(s) + \\text{Cu}^{2+}(aq) \\rightarrow \\text{Fe}^{2+}(aq) + \\text{Cu}(s)$, $E^\\circ_{\\text{cell}} = 0.78\\text{ V}$. Calculate standard Gibbs energy change $\\Delta G^\\circ$ ($F = 96500\\text{ C mol}^{-1}$).",
+                options: ["-150.54 kJ mol⁻¹", "+150.54 kJ mol⁻¹", "-75.27 kJ mol⁻¹", "-301.08 kJ mol⁻¹"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "What is the oxidation number of chromium in potassium dichromate ($\n\\text{K}_2\\text{Cr}_2\\text{O}_7$)?",
+                options: ["+6", "+3", "+5", "+7"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "Calculate the emf of Daniel cell at $298\\text{ K}$ when $[\n\\text{Zn}^{2+}] = 0.1\\text{ M}$ and $[\n\\text{Cu}^{2+}] = 0.01\\text{ M}$. ($E^\\circ_{\\text{cell}} = 1.10\\text{ V}$, $\\frac{2.303RT}{F} = 0.0591$).",
+                options: ["1.0705 V", "1.1295 V", "1.1000 V", "0.9805 V"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "Find the equivalent conductivity ($\n\\Lambda_{eq}^\\circ$) of $\\text{Al}_2(\\text{SO}_4)_3$ at infinite dilution if molar conductivities of $\\text{Al}^{3+}$ and $\\text{SO}_4^{2-}$ are $180\\text{ S cm}^2\\text{mol}^{-1}$ and $160\\text{ S cm}^2\\text{mol}^{-1}$ respectively.",
+                options: ["140 S cm² eq⁻¹", "340 S cm² eq⁻¹", "840 S cm² eq⁻¹", "170 S cm² eq⁻¹"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "How many Faradays of electricity are required to reduce $1\\text{ mole}$ of $\\text{MnO}_4^-$ to $\\text{Mn}^{2+}$ in acidic medium?",
+                options: ["5 F", "2 F", "3 F", "1 F"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "In the balanced equation: $a\\text{MnO}_4^- + b\\text{Fe}^{2+} + c\\text{H}^+ \\rightarrow d\\text{Mn}^{2+} + e\\text{Fe}^{3+} + f\\text{H}_2\\text{O}$, the stoichiometric coefficients $a, b, c$ are respectively:",
+                options: ["1, 5, 8", "2, 5, 16", "1, 2, 4", "2, 10, 8"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "Find the oxidation state of iron in brown ring complex $[\n\\text{Fe}(\\text{H}_2\\text{O})_5(\\text{NO})]\\text{SO}_4$.",
+                options: ["+1", "+2", "+3", "0"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "If standard reduction potential of $\\text{Cu}^{2+}/\\text{Cu}$ is $+0.34\\text{ V}$, what is the electrode potential of copper electrode in $0.1\\text{ M } \\text{Cu}^{2+}$ solution at $25^\\circ\\text{C}$?",
+                options: ["+0.3105 V", "+0.3695 V", "+0.2810 V", "+0.3400 V"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "The equilibrium constant $K_c$ for cell $\\text{Cu}(s) + 2\\text{Ag}^+(aq) \\rightleftharpoons \\text{Cu}^{2+}(aq) + 2\\text{Ag}(s)$ with $E^\\circ_{\\text{cell}} = 0.46\\text{ V}$ at $298\\text{ K}$ is approximately:",
+                options: ["3.92 × 10¹⁵", "1.56 × 10¹⁵", "2.10 × 10¹⁰", "4.50 × 10⁸"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "What is oxidation state of phosphorus in hypophosphorous acid ($\n\\text{H}_3\\text{PO}_2$)?",
+                options: ["+1", "+3", "+5", "-3"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "Molar conductivity of $0.001\\text{ M}$ acetic acid is $40\\text{ S cm}^2\\text{mol}^{-1}$. If limiting molar conductivity $\n\\Lambda_m^\\circ = 400\\text{ S cm}^2\\text{mol}^{-1}$, calculate dissociation constant $K_a$.",
+                options: ["1.11 × 10⁻⁵ mol L⁻¹", "1.80 × 10⁻⁵ mol L⁻¹", "1.00 × 10⁻⁴ mol L⁻¹", "2.50 × 10⁻⁶ mol L⁻¹"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "What amount of copper is deposited at cathode when $2.0\\text{ A}$ current is passed through $\\text{CuSO}_4$ solution for $30\\text{ minutes}$? (At. wt. $\\text{Cu} = 63.5\\text{ g/mol}$)",
+                options: ["1.184 g", "2.368 g", "0.592 g", "3.552 g"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "Determine oxidation number of carbon in glucose ($\n\\text{C}_6\\text{H}_{12}\\text{O}_6$).",
+                options: ["0", "+2", "-2", "+4"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "Given $E^\\circ_{\\text{Cr}^{3+}/\\text{Cr}} = -0.74\\text{ V}$ and $E^\\circ_{\\text{MnO}_4^-/\\text{Mn}^{2+}} = +1.51\\text{ V}$. What is $E^\\circ_{\\text{cell}}$ for reaction $2\\text{Cr} + 3\\text{MnO}_4^- + 24\\text{H}^+ \\rightarrow 2\\text{Cr}^{3+} + 3\\text{Mn}^{2+} + 12\\text{H}_2\\text{O}$?",
+                options: ["+2.25 V", "+0.77 V", "-2.25 V", "+3.02 V"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "Which of the following acts as the best reducing agent based on standard electrode potentials: $E^\\circ_{\\text{Li}^+/\\text{Li}} = -3.05\\text{ V}, E^\\circ_{\\text{K}^+/\\text{K}} = -2.93\\text{ V}, E^\\circ_{\\text{Na}^+/\\text{Na}} = -2.71\\text{ V}$?",
+                options: ["Li", "K", "Na", "Li⁺"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "A current of $0.5\\text{ A}$ is passed through an aqueous solution of $\\text{NiSO}_4$ for $2\\text{ hours}$. Calculate mass of nickel deposited at cathode. (At. mass $\\text{Ni} = 58.7\\text{ g/mol}$)",
+                options: ["1.095 g", "2.190 g", "0.547 g", "4.380 g"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "Oxidation state of chlorine in bleaching powder ($\n\\text{CaOCl}_2$) is/are:",
+                options: ["-1 and +1", "+2 only", "-1 only", "0 and +2"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "The cell potential of concentration cell $\\text{Pt}|\\text{H}_2(1\\text{ atm})|\\text{H}^+(a_1)|||\\text{H}^+(a_2)|\\text{H}_2(1\\text{ atm})|\\text{Pt}$ at $298\\text{ K}$ is given by:",
+                options: [
+                    "$0.0591 \\log \\frac{[\\text{H}^+]_2}{[\\text{H}^+]_1}$",
+                    "$0.0591 \\log \\frac{[\\text{H}^+]_1}{[\\text{H}^+]_2}$",
+                    "$-0.0591 \\log ([\\text{H}^+]_1 \\cdot [\\text{H}^+]_2)$",
+                    "Zero always"
+                ],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "How many moles of electrons are transferred when $1\\text{ mole}$ of $\\text{Cr}_2\\text{O}_7^{2-}$ is reduced to $\\text{Cr}^{3+}$ in acidic medium?",
+                options: ["6 moles of electrons", "3 moles of electrons", "2 moles of electrons", "12 moles of electrons"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "What is the cell potential for pure water at $298\\text{ K}$ using hydrogen electrode ($P_{\\text{H}_2} = 1\\text{ atm}$)?",
+                options: ["-0.413 V", "0.000 V", "+0.413 V", "-0.826 V"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "In Marshall's acid (Peroxodisulfuric acid, $\\text{H}_2\\text{S}_2\\text{O}_8$), oxidation state of sulfur is:",
+                options: ["+6", "+7", "+8", "+4"],
+                correct: 0
+            },
+            {
+                category: "Numerical / Critical",
+                text: "The specific conductivity of $0.02\\text{ M } \\text{KCl}$ solution at $25^\\circ\\text{C}$ is $0.002768\\text{ S cm}^{-1}$. Calculate its molar conductivity $\n\\Lambda_m$.",
+                options: ["138.4 S cm² mol⁻¹", "276.8 S cm² mol⁻¹", "69.2 S cm² mol⁻¹", "13.84 S cm² mol⁻¹"],
+                correct: 0
+            }
+        ];
+
+        // GLOBAL APP STATE
+        let questions = []; // Shuffled per session
+        let candidateResponses = []; // Array storing user selections & status
+        let currentQIndex = 0;
+        let timerInterval = null;
+        let totalTimeSeconds = 3600; // 1 hour = 3600 sec
+        let candidateName = "";
+        let tabSwitchCount = 0;
+        let generatedCaptcha = "";
+        let performanceChartInstance = null;
+
+        window.onload = function() {
+            setTodayDateHint();
+            generateCaptcha();
+            setupProctoring();
+        };
+
+        // Format Date String for Password Hint
+        function setTodayDateHint() {
+            const today = new Date();
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const yyyy = today.getFullYear();
+            const dateStr = `${dd}${mm}${yyyy}`;
+            document.getElementById('pwd-hint-date').innerText = dateStr;
+        }
+
+        // Generate Random Captcha
+        function generateCaptcha() {
+            const chars = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+            let captcha = '';
+            for (let i = 0; i < 5; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            generatedCaptcha = captcha;
+            document.getElementById('captcha-box').innerText = captcha;
+        }
+
+        function setupProctoring() {
+            // Block Context Menu & Key Combinations
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', e => {
+                if (e.ctrlKey || e.metaKey || e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C'))) {
+                    e.preventDefault();
+                }
+            });
+
+            // Tab Switching & Focus Loss Detection
+            window.addEventListener('blur', () => {
+                if (document.getElementById('cbt-interface').classList.contains('hidden')) return;
+                tabSwitchCount++;
+                if (tabSwitchCount >= 3) {
+                    alert("SECURITY VIOLATION: Multiple tab switches detected. Exam is being auto-submitted.");
+                    submitTest();
+                } else {
+                    alert(`WARNING (${tabSwitchCount}/3): You navigated away from the exam screen! Swapping tabs or leaving full-screen is strictly monitored.`);
+                }
+            });
+        }
+
+        function validateLogin(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('candidate-name').value.trim();
+            const pwdInput = document.getElementById('exam-password').value.trim();
+            const captchaInput = document.getElementById('captcha-input').value.trim().toUpperCase();
+            const errorDiv = document.getElementById('login-error');
+
+            const today = new Date();
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const yyyy = today.getFullYear();
+            const expectedDatePassword = `${dd}${mm}${yyyy}`;
+
+            if (pwdInput !== expectedDatePassword) {
+                errorDiv.innerText = "Invalid Today's Password! Ensure format is DDMMYYYY matching current date.";
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            if (captchaInput !== generatedCaptcha) {
+                errorDiv.innerText = "Invalid Captcha Code. Please try again.";
+                errorDiv.classList.remove('hidden');
+                generateCaptcha();
+                return;
+            }
+
+            candidateName = nameInput;
+            document.getElementById('display-candidate-name').innerText = candidateName;
+
+            // Trigger Fullscreen
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen().catch(() => {});
+            }
+
+            // Shuffle Questions and Options for Dynamic Session
+            initializeShuffledQuestions();
+
+            // Hide Login & Show CBT Exam Interface
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('cbt-interface').classList.remove('hidden');
+            document.getElementById('header-timer').classList.remove('hidden');
+
+            startTimer();
+            renderQuestion(0);
+            renderPalette();
+        }
+
+        // Shuffle Array Helper
+        function shuffleArray(arr) {
+            const array = [...arr];
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Initialize Dynamic Shuffled Questions
+        function initializeShuffledQuestions() {
+            const shuffledRaw = shuffleArray(rawQuestions);
+            questions = shuffledRaw.map((q) => {
+                // Shuffle options while keeping track of original correct option
+                const originalOptions = [...q.options];
+                const correctAnswerText = originalOptions[q.correct];
+                
+                const shuffledOpts = shuffleArray(originalOptions);
+                const newCorrectIndex = shuffledOpts.indexOf(correctAnswerText);
+
+                return {
+                    category: q.category,
+                    text: q.text,
+                    options: shuffledOpts,
+                    correct: newCorrectIndex
+                };
+            });
+
+            // Initialize Candidate Responses Tracker
+            candidateResponses = questions.map(() => ({
+                selectedIndex: null,
+                status: 'unvisited' // 'unvisited', 'skipped', 'answered', 'review'
+            }));
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                totalTimeSeconds--;
+                
+                const hrs = Math.floor(totalTimeSeconds / 3600);
+                const mins = Math.floor((totalTimeSeconds % 3600) / 60);
+                const secs = totalTimeSeconds % 60;
+
+                document.getElementById('timer-display').innerText = 
+                    `${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+
+                if (totalTimeSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Time is up! Your examination is auto-submitting.");
+                    submitTest();
+                }
+            }, 1000);
+        }
+
+        function renderQuestion(index) {
+            currentQIndex = index;
+
+            // Mark visited if previously unvisited
+            if (candidateResponses[index].status === 'unvisited') {
+                candidateResponses[index].status = 'skipped';
+            }
+
+            const q = questions[index];
+            document.getElementById('q-category-tag').innerText = q.category;
+            document.getElementById('q-number-title').innerText = `Question ${index + 1} of ${questions.length}`;
+            document.getElementById('question-text').innerHTML = q.text;
+
+            // Render Options
+            const optsContainer = document.getElementById('options-container');
+            optsContainer.innerHTML = '';
+
+            const selectedOpt = candidateResponses[index].selectedIndex;
+
+            q.options.forEach((optText, optIdx) => {
+                const isSelected = selectedOpt === optIdx;
+                const optDiv = document.createElement('div');
+                optDiv.onclick = () => selectOption(optIdx);
+                optDiv.className = `p-3.5 rounded-xl border-2 cursor-pointer flex items-center space-x-3 transition ${
+                    isSelected 
+                    ? 'border-indigo-600 bg-indigo-50/80 text-indigo-950 font-semibold shadow-sm' 
+                    : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
+                }`;
+
+                optDiv.innerHTML = `
+                    <div class="w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold ${
+                        isSelected ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-400 text-slate-500'
+                    }">
+                        ${String.fromCharCode(65 + optIdx)}
+                    </div>
+                    <div class="text-sm flex-grow">${optText}</div>
+                `;
+                optsContainer.appendChild(optDiv);
+            });
+
+            // Update Navigation Buttons
+            document.getElementById('btn-prev').disabled = index === 0;
+            document.getElementById('btn-next').innerHTML = index === questions.length - 1 
+                ? 'Save & Submit <i class="fa-solid fa-check ml-1"></i>' 
+                : 'Save & Next <i class="fa-solid fa-chevron-right ml-1"></i>';
+
+            renderPalette();
+
+            // Re-render MathJax
+            if (window.MathJax) {
+                MathJax.typesetPromise([document.getElementById('question-scroll-area')]).catch(()=>{});
+            }
+        }
+
+        // Option Selection Handler
+        function selectOption(optIdx) {
+            candidateResponses[currentQIndex].selectedIndex = optIdx;
+            candidateResponses[currentQIndex].status = 'answered';
+            renderQuestion(currentQIndex);
+        }
+
+        // Clear Response
+        function clearResponse() {
+            candidateResponses[currentQIndex].selectedIndex = null;
+            candidateResponses[currentQIndex].status = 'skipped';
+            renderQuestion(currentQIndex);
+        }
+
+        // Mark For Review
+        function markForReview() {
+            candidateResponses[currentQIndex].status = 'review';
+            navigateQuestion(1);
+        }
+
+        // Navigate Questions
+        function navigateQuestion(step) {
+            const nextIdx = currentQIndex + step;
+            if (nextIdx >= 0 && nextIdx < questions.length) {
+                renderQuestion(nextIdx);
+            } else if (nextIdx >= questions.length) {
+                confirmSubmitTest();
+            }
+        }
+
+        function renderPalette() {
+            const grid = document.getElementById('palette-grid');
+            grid.innerHTML = '';
+
+            candidateResponses.forEach((resp, idx) => {
+                const btn = document.createElement('button');
+                btn.onclick = () => renderQuestion(idx);
+
+                let dotClass = 'dot-unvisited';
+                if (resp.status === 'answered') dotClass = 'dot-answered';
+                else if (resp.status === 'skipped') dotClass = 'dot-skipped';
+                else if (resp.status === 'review') dotClass = 'dot-review';
+
+                const isCurrent = idx === currentQIndex;
+
+                btn.className = `w-9 h-9 rounded-full font-bold text-xs flex items-center justify-center transition border-2 ${dotClass} ${
+                    isCurrent ? 'ring-2 ring-indigo-600 ring-offset-2 scale-105' : ''
+                }`;
+                btn.innerText = idx + 1;
+                grid.appendChild(btn);
+            });
+        }
+
+        function confirmSubmitTest() {
+            if (confirm("Are you sure you want to submit your examination paper?")) {
+                submitTest();
+            }
+        }
+
+        function submitTest() {
+            clearInterval(timerInterval);
+
+            // Calculate Score
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unattemptedCount = 0;
+
+            candidateResponses.forEach((resp, idx) => {
+                if (resp.selectedIndex === null) {
+                    unattemptedCount++;
+                } else if (resp.selectedIndex === questions[idx].correct) {
+                    correctCount++;
+                } else {
+                    incorrectCount++;
+                }
+            });
+
+            const totalScore = (correctCount * 4) - (incorrectCount * 1);
+            const totalAttempted = correctCount + incorrectCount;
+            const accuracy = totalAttempted > 0 ? Math.round((correctCount / totalAttempted) * 100) : 0;
+            const submissionTime = new Date().toLocaleString('en-IN');
+
+            // Render Results
+            document.getElementById('cbt-interface').classList.add('hidden');
+            document.getElementById('header-timer').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+
+            document.getElementById('res-name').innerText = candidateName;
+            document.getElementById('res-score').innerText = `${totalScore} / 180`;
+            document.getElementById('res-correct').innerText = correctCount;
+            document.getElementById('res-incorrect').innerText = incorrectCount;
+            document.getElementById('res-accuracy').innerText = `${accuracy}%`;
+            document.getElementById('res-timestamp').innerText = submissionTime;
+
+            // Render hidden certificate for PNG capture
+            document.getElementById('cert-name').innerText = candidateName;
+            document.getElementById('cert-score').innerText = `${totalScore} / 180`;
+            document.getElementById('cert-correct').innerText = correctCount;
+            document.getElementById('cert-incorrect').innerText = incorrectCount;
+            document.getElementById('cert-accuracy').innerText = `${accuracy}%`;
+            document.getElementById('cert-date').innerText = submissionTime;
+
+            // Render Graphical Chart
+            renderChart(correctCount, incorrectCount, unattemptedCount);
+        }
+
+        function renderChart(correct, incorrect, unattempted) {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            
+            if (performanceChartInstance) {
+                performanceChartInstance.destroy();
+            }
+
+            performanceChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Correct (+4)', 'Incorrect (-1)', 'Unattempted (0)'],
+                    datasets: [{
+                        data: [correct, incorrect, unattempted],
+                        backgroundColor: ['#22c55e', '#ef4444', '#cbd5e1'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        }
+
+        function generateAndSendWhatsAppPNG() {
+            const certCard = document.getElementById('certificate-card');
+            certCard.classList.remove('hidden'); // Temporarily show for canvas capture
+
+            html2canvas(certCard, {
+                scale: 2,
+                backgroundColor: "#ffffff",
+                useCORS: true
+            }).then(canvas => {
+                certCard.classList.add('hidden'); // Re-hide after capture
+
+                // Convert Canvas to Image URL
+                const imageURI = canvas.toDataURL("image/png");
+
+                // Trigger PNG Download
+                const downloadLink = document.createElement('a');
+                downloadLink.download = `${candidateName.replace(/\s+/g, '_')}_NEET_Series7_Scorecard.png`;
+                downloadLink.href = imageURI;
+                downloadLink.click();
+
+                // Open WhatsApp Chat to 8910587106
+                const scoreText = document.getElementById('res-score').innerText;
+                const correctText = document.getElementById('res-correct').innerText;
+                const incorrectText = document.getElementById('res-incorrect').innerText;
+
+                const message = encodeURIComponent(
+                    `Hello Soumendra Sir,\n\nHere is my official NEET CBT Scorecard:\n` +
+                    `*Candidate:* ${candidateName}\n` +
+                    `*Exam:* NEET CHEMISTRY XI EXAM SERIES 7 SET A\n` +
+                    `*Topic:* Redox Reactions & Electrochemistry\n` +
+                    `*Total Score:* ${scoreText}\n` +
+                    `*Correct Answers:* ${correctText}\n` +
+                    `*Incorrect Answers:* ${incorrectText}\n\n` +
+                    `I have attached my downloaded PNG Scorecard image as proof.`
+                );
+
+                const whatsappUrl = `https://wa.me/918910587106?text=${message}`;
+                window.open(whatsappUrl, '_blank');
+            }).catch(() => {
+                certCard.classList.add('hidden');
+                alert("Failed to generate PNG image certificate. Please retry.");
+            });
+        }
+    </script>
+</body>
+</html>
